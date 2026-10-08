@@ -42,12 +42,9 @@ public class BFSProcessor {
         List<Integer> allValidNeighbors = getAllValidNeighbors(nodeNo);
         queue.addAll(allValidNeighbors);
         visitedNodes.addAll(allValidNeighbors);
+        result.add(new Integer(nodeNo));
         Integer head = queue.poll();
         if (head == null) {
-            return;
-        }
-        result.add(new Integer(nodeNo));
-        if (queue.peek() == null) {
             return;
         }
         search(head);
