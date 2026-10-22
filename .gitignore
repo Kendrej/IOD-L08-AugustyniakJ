@@ -1,3 +1,6 @@
 out/
 **/.idea/workspace.xml
 **/.idea/shelf/
+# wyniki budowania Anta
+**/bank-zbozowy/bin/
+**/bank-zbozowy/dist/
