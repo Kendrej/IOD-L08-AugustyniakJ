@@ -4,3 +4,5 @@ out/
 # wyniki budowania Anta
 **/bank-zbozowy/bin/
 **/bank-zbozowy/dist/
+# wyniki budowania Mavena
+**/bank-zbozowy-mvn/target/
