@@ -15,6 +15,20 @@
 	
 	<build>
 		<finalName>BankZbozowyApp</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>9.4.7.v20170914</version>
+				<configuration>
+					<contextPath>/</contextPath>
+					<scanIntervalSeconds>10</scanIntervalSeconds>
+					<httpConnector>
+						<port>9091</port>
+					</httpConnector>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
 
 	<dependencies>
