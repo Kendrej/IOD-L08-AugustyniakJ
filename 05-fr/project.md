@@ -77,29 +77,75 @@ Osoba chcąca zakupić produkt na aukcji.
 ---
 
 <a id="uc2"></a>
-### UC2: ...
+### UC2: Złożenie oferty
 
-**Aktorzy:** [Sprzedający](#ac1), [Kupujący](#ac2), ...
+**Aktorzy:** [Kupujący](#ac2)
 
 **Scenariusz główny:**
-1. ...
+1. [Kupujący](#ac2) zgłasza do systemu chęć złożenia [oferty](#bo3) w wybranej [aukcji](#bo1).
+2. System prezentuje aktualnie najwyższą ofertę i prosi o podanie kwoty.
+3. [Kupujący](#ac2) podaje kwotę oferty.
+4. System weryfikuje, czy kwota spełnia warunek złożenia oferty. ([BR1](#br1))
+5. System rejestruje ofertę jako aktualnie najwyższą w aukcji.
+6. System informuje o pomyślnym złożeniu oferty.
 
 **Scenariusze alternatywne:** 
 
-1.A. ...
-* 4.A.1. ...
+1.A. Aukcja została już zakończona. ([BR2](#br2))
+* 1.A.1. System informuje, że w zakończonej aukcji nie można składać ofert.
+* 1.A.2. Koniec przypadku użycia.
+
+4.A. Podana kwota nie spełnia warunku złożenia oferty. ([BR1](#br1))
+* 4.A.1. System informuje o zbyt niskiej kwocie i podaje minimalną kwotę oferty.
+* 4.A.2. Przejdź do kroku 3.
+
+---
+
+<a id="uc3"></a>
+### UC3: Przekazanie należności za wygraną aukcję
+
+**Aktorzy:** [Kupujący](#ac2), [Sprzedający](#ac1)
+
+**Scenariusz główny:**
+1. [Kupujący](#ac2) zgłasza do systemu chęć opłacenia wygranej [aukcji](#bo1).
+2. System prezentuje kwotę należności równą zwycięskiej [ofercie](#bo3) ([BR2](#br2)) i prosi o wybór sposobu płatności.
+3. [Kupujący](#ac2) wybiera sposób płatności i potwierdza [płatność](#bo4).
+4. System realizuje płatność na rzecz [Sprzedającego](#ac1).
+5. System informuje [Kupującego](#ac2) i [Sprzedającego](#ac1) o opłaceniu aukcji.
+
+**Scenariusze alternatywne:** 
+
+1.A. Upłynął termin płatności za aukcję. ([BR3](#br3))
+* 1.A.1. System informuje, że aukcja nie może już zostać opłacona.
+* 1.A.2. Koniec przypadku użycia.
+
+4.A. Płatność nie powiodła się.
+* 4.A.1. System informuje o niepowodzeniu płatności.
+* 4.A.2. Przejdź do kroku 2.
 
 ---
 
 ## Obiewkty biznesowe (inaczje obiekty dziedzinowe lub informatycjne)
 
+<a id="bo1"></a>
 ### BO1: Aukcja
 
 Aukcja jest formą zawierania transakcji kupna-sprzedaży, w której Sprzedający określa cenę wywoławczą produktu, natomiast Kupujący mogą oferować własną ofertę zakupu każdorazowo proponując kwotę wyższą od aktualnie oferowanej kwoty. Aukcja kończy się po upływie określonego czasu. Jeśli złożona została co najmniej jedna oferta zakupy produkt nabywa ten Kupujący, który zaproponował najwyższą kwotę. 
 
+<a id="bo2"></a>
 ### BO2: Produkt
 
 Fizyczny lub cyfrowy obiekt, który ma zostać sprzedany w ramach aukcji.
+
+<a id="bo3"></a>
+### BO3: Oferta
+
+Kwota zaproponowana przez [Kupującego](#ac2) za produkt w ramach aukcji. Najwyższa oferta w momencie zakończenia aukcji jest ofertą zwycięską.
+
+<a id="bo4"></a>
+### BO4: Płatność
+
+Przekazanie [Sprzedającemu](#ac1) należności za produkt przez [Kupującego](#ac2), który wygrał aukcję.
 
 ## Reguły biznesowe
 
@@ -113,6 +159,11 @@ Złożenie oferty wymaga zaproponowania kwoty wyższej niż aktualnie oferowana 
 ### BR2: Rozstrzygnięcie aukcji
 
 Aukcję wygrywa ten z [Kupujący](#ac2)ch, który w momencie jej zakończenia (upłynięcia czasu) złożył najwyższą ofertę.
+
+<a id="br3"></a>
+### BR3: Termin płatności
+
+[Kupujący](#ac2), który wygrał aukcję, musi przekazać należność w ciągu 7 dni od jej zakończenia.
 
 ## Macierz CRUDL
 
