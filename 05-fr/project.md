@@ -168,9 +168,19 @@ Aukcję wygrywa ten z [Kupujący](#ac2)ch, który w momencie jej zakończenia (u
 ## Macierz CRUDL
 
 
-| Przypadek użycia                                  | Aukcja | Produkt | ... |
-| ------------------------------------------------- | ------ | ------- | --- |
-| UC1: Wystawienia produktu na aukcję               |    C   |    C    | ... |
-| ???                                               |  ...   |  ...    | ... |
+| Przypadek użycia                                  | Aukcja | Produkt | Oferta | Płatność |
+| ------------------------------------------------- | ------ | ------- | ------ | -------- |
+| UC1: Wystawienie produktu na aukcję               |    C   |    C    |        |          |
+| UC2: Złożenie oferty                              |    R   |    R    |   CR   |          |
+| UC3: Przekazanie należności za wygraną aukcję     |    R   |         |    R   |    C     |
+
+### Analiza kompletności
+
+| Obiekt biznesowy | Pokryte operacje | Brakujące operacje | Wniosek |
+| ---------------- | ---------------- | ------------------ | ------- |
+| Aukcja           | C, R             | U, D, L            | Brak możliwości przeglądania listy aukcji (L) - Kupujący nie ma jak znaleźć aukcji, w której chce złożyć ofertę. Brak edycji (U) i anulowania (D) aukcji przez Sprzedającego. |
+| Produkt          | C, R             | U, L               | Sprzedający nie może poprawić danych wystawionego produktu (U). Lista produktów (L) jest realizowana razem z listą aukcji. Usunięcie produktu (D) następuje razem z anulowaniem aukcji. |
+| Oferta           | C, R             | L                  | Brak podglądu historii ofert w aukcji (L). Edycja (U) i wycofanie (D) oferty są celowo niedostępne - złożona oferta jest wiążąca. |
+| Płatność         | C                | R, L               | Sprzedający nie może sprawdzić, czy aukcja została opłacona (R), a Kupujący nie ma wglądu w historię swoich płatności (L). Edycja (U) i usunięcie (D) płatności nie mają sensu biznesowego. |
 
 
