@@ -50,10 +50,16 @@ Osoba chcąca zakupić produkt na aukcji.
 
 [Sprzedający](#ac1):
 * [UC1](#uc1): Wystawienie produktu na aukcję
+* UC4: Edycja aukcji
+* UC5: Anulowanie aukcji
+* UC6: Sprawdzenie statusu płatności za aukcję
 
 [Kupujący](#ac2):
 * [UC2](#uc2): Złożenie oferty
 * [UC3](#uc3): Przekazanie należności za wygraną aukcję
+* UC7: Przeglądanie aukcji
+* UC8: Przeglądanie historii ofert w aukcji
+* UC9: Przeglądanie historii płatności
 
 ---
 <a id="uc1"></a>
@@ -173,6 +179,12 @@ Aukcję wygrywa ten z [Kupujący](#ac2)ch, który w momencie jej zakończenia (u
 | UC1: Wystawienie produktu na aukcję               |    C   |    C    |        |          |
 | UC2: Złożenie oferty                              |    R   |    R    |   CR   |          |
 | UC3: Przekazanie należności za wygraną aukcję     |    R   |         |    R   |    C     |
+| UC4: Edycja aukcji                                |   RU   |   RU    |        |          |
+| UC5: Anulowanie aukcji                            |   RD   |    D    |        |          |
+| UC6: Sprawdzenie statusu płatności za aukcję      |    R   |         |        |    R     |
+| UC7: Przeglądanie aukcji                          |   RL   |   RL    |    R   |          |
+| UC8: Przeglądanie historii ofert w aukcji         |    R   |         |    L   |          |
+| UC9: Przeglądanie historii płatności              |    R   |         |        |    L     |
 
 ### Analiza kompletności
 
